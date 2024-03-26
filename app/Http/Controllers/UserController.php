@@ -1,22 +1,50 @@
 <?php 
 
 namespace App\Http\Controllers;
+use App\Models\User;
+use Illuminate\Http\Request;
 
-class UserController extends Controllers
+class UserController extends Controller
 {
-    //atributo
-    public string $name;
-    protected int $age;
-
-    //métodos
-
-    public function meuMetodo(): string //função
+    public function index()
     {
-        return $this->name = "Aqui vai meu nome";
+        $users = User::all();
+
+        return response()->json($users);
     }
-    public function meuMetodo2(): void //procedimento
+
+    public function store(Request $request)
     {
-        return $this->name = "Aqui vai meu nome";
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+        ]);
+
+        return $user;
+    }
+
+    public function update($id, Request $request)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json("Usuário não encontrado");
+        };
+
+            $user->update($request->all());
+
+            return response()->json($user);
+
+    }
+
+    public function delete($id)
+    {
+        $user = User::find($id);
+
+        $user->delete();
+
+        return $user;
     }
 }
  
