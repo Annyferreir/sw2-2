@@ -1,7 +1,6 @@
-<?php
+<?php 
 
 namespace App\Http\Controllers;
-
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -9,18 +8,11 @@ class UserController extends Controller
 {
     public function index()
     {
-               $users = User::all();
+        $users = User::all();
 
         return view ('users.index', [
             'users' => $users
         ]);
-    }
-
-    public function show($id)
-    {
-        $user = User::find($id);
-
-        return view('user.show', ['user' => $user]);
     }
 
     public function store(Request $request)
@@ -31,7 +23,7 @@ class UserController extends Controller
             'password' => $request->password,
         ]);
 
-        return redirect()->route('create.show');
+        return $user;
     }
 
     public function update($id, Request $request)
@@ -57,3 +49,4 @@ class UserController extends Controller
         return $user;
     }
 }
+ 
