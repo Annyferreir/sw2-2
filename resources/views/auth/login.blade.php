@@ -32,11 +32,32 @@
         </li>
         
       </ul>
-      <form class="d-flex" role="search" action="{{ route('auth.login.page')}}" method="GET">
-        <button class="btn btn-primary" type="submit">Login</button>
+      <form class="d-flex" role="search" action="" method="GET">
+        <button class="btn btn-success" type="submit">Login</button>
       </form>
     </div>
   </div>
 </nav>
+    <div class="row">
+        <div class="col">
+            <form action="{{ route('auth.login')}}" method="POST">
+                @csrf
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email </label>
+                  <input name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <div id="emailHelp" class="form-text">Adicione seu e-mai por favor</div>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Senha</label>
+                  <input name="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Lembre-me</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Logar</button>
+              </form>
+        </div>
+    </div>
 </body>
 </html>
