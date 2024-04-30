@@ -15,9 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/contato', function () {
+    return view('app.contato');
+})->name('contato');
+
+Route::get('/sobre-nos', function () {
+    return view('app.contato');
+})->name('sobre-nos');
 
 Route::get('users', [UserController::class, 'index'])->name('users.index');
 Route::get('users/{id}', [UserController::class, 'show'])->name('users.show');
